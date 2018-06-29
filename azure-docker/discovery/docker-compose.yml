@@ -1,0 +1,12 @@
+version: '3'
+services:
+
+  node-discovery-server:
+    image: watcharaphat/node-discovery-server
+    ports:
+      - 3000:3000
+    networks:
+      - tendermint-benchmark
+
+networks:
+  tendermint-benchmark:
