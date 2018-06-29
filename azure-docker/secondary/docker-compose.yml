@@ -20,13 +20,13 @@ services:
     image: watcharaphat/tendermint:latest
     environment:
       - TM_RPC_PORT=${TM_RPC_PORT:-45000}
-      - SEED_HOSTNAME=genesis0.xgszj11w0d1e1gyk3tzwrn0uld.ix.internal.cloudapp.net
+      - SEED_HOSTNAME=genesis0
     command:
       - secondary
       - --p2p.laddr=tcp://0.0.0.0:${TM_P2P_PORT:-47000}
       - --rpc.laddr=tcp://0.0.0.0:${TM_RPC_PORT:-45000}
       - --proxy_app=tcp://localhost:${ABCI_PORT:-46000}
-      - --p2p.seeds=tcp://genesis0.xgszj11w0d1e1gyk3tzwrn0uld.ix.internal.cloudapp.net:${TM_P2P_PORT:-47000}
+      - --p2p.seeds=tcp://genesis0:${TM_P2P_PORT:-47000}
     ports:
       - 45000:${TM_RPC_PORT:-45000}
       - 47000:${TM_P2P_PORT:-47000}
