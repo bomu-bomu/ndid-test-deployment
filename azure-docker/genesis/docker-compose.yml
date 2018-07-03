@@ -24,7 +24,7 @@ services:
      - TENDERMINT_IP=localhost
      - TENDERMINT_PORT=45000
      - SERVER_PORT=8000
-     - DISCOVERY_HOSTNAME=ubuntu1
+     - DISCOVERY_HOSTNAME=controller
      - DISCOVERY_PORT=3000
     ports:
       - 8000:8000
@@ -37,7 +37,7 @@ services:
     image: watcharaphat/abci:latest
     command: ["tcp://0.0.0.0:${ABCI_PORT:-46000}"]
     environment:
-     - DISCOVERY_HOSTNAME=ubuntu1
+     - DISCOVERY_HOSTNAME=controller
      - DISCOVERY_PORT=3000
     ports:
       - 8100:8100
