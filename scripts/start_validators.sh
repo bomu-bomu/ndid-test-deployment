@@ -36,6 +36,10 @@ i=$node
 finish=`expr $count + $node`
 count_validators=`get_total_validators`
 incr=5
+if [ $incr -gt $count ]
+then
+  incr=$count
+fi
 
 while [ $i -lt $finish ]
 do
