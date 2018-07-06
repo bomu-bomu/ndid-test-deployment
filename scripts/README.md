@@ -12,12 +12,11 @@
 - curl
 
 ## Quick and Dirty Start
-run
 ```
 ./quick_start.sh <node>
 ```
 This command will clear old environment and restart genesis and secondary nodes as specified in `<node>`
-#### For example,
+#### Example:
 
 ```
 ./quick_start.sh 20 
@@ -41,6 +40,7 @@ Populate with 20 secondary nodes.
 - validators - get total validators known by Genesis
 
 ## Secondary Node
+### Add Node
 ```
 ./start_validators <count> <offset>
 ```
@@ -51,6 +51,7 @@ Start secondary node with validators `<count>` nodes start from `<offset>`
 ```
 This command will start 20 secondary nodes from tm-node-40 to tm-node-59
 
+### Remove Node
 ```
 ./stop_validators [pattern]
 ```
