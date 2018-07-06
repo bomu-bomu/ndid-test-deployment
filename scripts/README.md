@@ -16,13 +16,13 @@ run
 ```
 ./quick_start.sh <node>
 ```
-This command will clear old environment and restart genesis and secondary nodes as specified in <node>
-For example,
+This command will clear old environment and restart genesis and secondary nodes as specified in `<node>`
+#### For example,
 
 ```
 ./quick_start.sh 20 
 ```
-Pupulate with 20 secondary nodes.
+Populate with 20 secondary nodes.
 
 ## Discovery Node
 ```
@@ -44,8 +44,8 @@ Pupulate with 20 secondary nodes.
 ```
 ./start_validators <count> <offset>
 ```
-Start secondary node with validators <count> nodes start from <offset>
-Example:
+Start secondary node with validators `<count>` nodes start from `<offset>`
+#### Example:
 ```
 ./start_validators 20 40
 ```
@@ -55,7 +55,7 @@ This command will start 20 secondary nodes from tm-node-40 to tm-node-59
 ./stop_validators [pattern]
 ```
 Stop validators. If not specified pattern, it will stop all secondary node
-Example:
+#### Example:
 ```
 ./stop_validators
 ./stop_validators tm-node-?
