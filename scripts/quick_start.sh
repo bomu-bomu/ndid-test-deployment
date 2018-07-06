@@ -1,4 +1,5 @@
 #! /bin/bash
+validators=${1:-100}
 
 ##  Check that all service is closed
 ./stop_validators.sh
@@ -8,5 +9,5 @@
 ## Start Genesis
 ./genesis.sh start
 sleep 5
-## Start populate validator
-./start_validators.sh 100 0
+## Start populate validators
+./start_validators.sh $validators
