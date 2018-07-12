@@ -7,7 +7,7 @@ services:
      - TENDERMINT_IP=localhost
      - TENDERMINT_PORT=45000
      - SERVER_PORT=8000
-     - DISCOVERY_HOSTNAME=controller
+     - DISCOVERY_HOSTNAME=${DISCOVERY_HOSTNAME:-controller}
      - DISCOVERY_PORT=3000
     ports:
       - 8000:8000
@@ -20,7 +20,7 @@ services:
     image: watcharaphat/tendermint:latest
     environment:
       - TM_RPC_PORT=${TM_RPC_PORT:-45000}
-      - SEED_HOSTNAME=genesis0
+      - SEED_HOSTNAME=${GENESIS:-genesis0}
     command:
       - secondary
       - --p2p.laddr=tcp://0.0.0.0:${TM_P2P_PORT:-47000}
