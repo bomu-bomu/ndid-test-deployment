@@ -56,7 +56,7 @@ do
   do
     echo -n "."
     sleep 1
-    count_validators=`curl -s http://${genesis}:45000/validators | grep -c pub_key`
+    count_validators=`get_total_validators`
   done
   echo $count_validators
 done
