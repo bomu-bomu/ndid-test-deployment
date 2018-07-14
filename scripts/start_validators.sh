@@ -1,12 +1,14 @@
 #!/bin/bash
 
 count=${1:-1}
-node=${2:-0}
+node=${2:-1}
 prefix="tm-node-"
+
+genesis=${GENESIS_NAME:genesis0}
 
 START_SECONDARY_NODE_CMD="docker-compose -f /home/tester/ndid-test-deployment/azure-docker/secondary/docker-compose.yml up -d"
 get_total_validators() {
-  curl -s http://genesis0:45000/validators | grep -c pub_key
+  curl -s http://$genesis:45000/validators | grep -c pub_key
 }
 
 get_node_name() {
@@ -45,7 +47,7 @@ while [ $i -lt $finish ]
 do
   node_name=`get_node_name $i $incr`
   echo "Start node: $node_name"
-  ansible $node_name -m shell -a "$START_SECONDARY_NODE_CMD"
+  ansible $node_name -m shell -a "GENESIS=$genesis $START_SECONDARY_NODE_CMD"
   i=`expr $i + $incr`
   expected_validators=`expr $count_validators + $incr`
 
@@ -54,7 +56,7 @@ do
   do
     echo -n "."
     sleep 1
-    count_validators=`curl -s http://genesis0:45000/validators | grep -c pub_key`
+    count_validators=`curl -s http://${genesis}:45000/validators | grep -c pub_key`
   done
   echo $count_validators
 done
