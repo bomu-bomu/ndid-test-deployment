@@ -19,7 +19,7 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO 
 curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 apt-get update 
-apt-get install -y docker-ce azure-cli
+apt-get install -y docker-ce azure-cli ansible ntp
 
 curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 chmod 755 /usr/local/bin/docker-compose
