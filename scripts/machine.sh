@@ -39,6 +39,7 @@ case $command in
   update)
     echo "Update vm nodes to latest"
     ansible $NODE_PREFIX -m apt -a "update_cache=yes upgrade=yes" --become --fork=10
+    ;;
   *)
     echo "Usage: $0 <start|stop|update>"
     ;;
