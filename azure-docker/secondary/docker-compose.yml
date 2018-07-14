@@ -29,6 +29,8 @@ services:
     ports:
       - 45000:${TM_RPC_PORT:-45000}
       - 47000:${TM_P2P_PORT:-47000}
+    volumes:
+      - ./store:/tendermint
     network_mode: host
 
   abci:
