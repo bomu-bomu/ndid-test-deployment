@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 command=$1
 CONFIG="/home/tester/ndid-test-deployment/azure-docker/genesis/docker-compose.yml"
@@ -24,6 +24,11 @@ case $command in
     conf_path=`dirname $CONFIG`
     ansible $genesis -m file -a "state=absent path=$conf_path/store" --become
     ansible $genesis -m unarchive -a "src=backup/genesis.tbz dest=$conf_path" --become
+    ;;
+  reset)
+    echo "Reset Genesis Data"
+    conf_path=`dirname $CONFIG`
+    ansible $genesis -m file -a "state=absent path=$conf_path/store" --become
     ;;
   validators)
     curl -s http://$genesis:45000/validators | grep -c pub_key
