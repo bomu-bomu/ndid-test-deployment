@@ -2,7 +2,7 @@ version: '3'
 services:
 
   api:
-    image: watcharaphat/tm-benchmark-api:latest
+    image: bomubomu/tm-benchmark-api:latest
     environment:
      - TENDERMINT_IP=localhost
      - TENDERMINT_PORT=45000
