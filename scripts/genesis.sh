@@ -25,10 +25,22 @@ case $command in
     ansible $genesis -m file -a "state=absent path=$conf_path/store" --become
     ansible $genesis -m unarchive -a "src=backup/genesis.tbz dest=$conf_path" --become
     ;;
+  config)
+    echo "Send tendermint config"
+    conf_path=`dirname $CONFIG`
+    ansible $genesis -m copy -a "dest=$conf_path/store/config/config.toml src=`pwd`/config.toml" --become
+    ;;
   reset)
     echo "Reset Genesis Data"
     conf_path=`dirname $CONFIG`
     ansible $genesis -m file -a "state=absent path=$conf_path/store" --become
+    ansible $genesis -m file -a "state=directory path=$conf_path/store" --become
+    ansible $genesis -m file -a "state=directory path=$conf_path/store/config" --become
+    ;;
+  refresh)
+    echo "Refresh docker image"
+    ansible $genesis -m shell -a "docker-compose -f $CONFIG pull"
+    ansible $genesis -m shell -a "docker system prune -f"
     ;;
   validators)
     curl -s http://$genesis:45000/validators | grep -c pub_key
