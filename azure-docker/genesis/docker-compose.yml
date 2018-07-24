@@ -3,7 +3,7 @@ services:
 
   # genesis node
   tm-node-genesis:
-    image: watcharaphat/tendermint:latest
+    image: bomubomu/tendermint:0.22.5
     environment:
       - TM_RPC_PORT=${TM_RPC_PORT:-45000}
     command: 
@@ -43,5 +43,7 @@ services:
      - DISCOVERY_PORT=${DISCOVERY_PORT:-3000}
     ports:
       - 8100:8100
+    volumes:
+      -./DID:/DID
     network_mode: host
 
