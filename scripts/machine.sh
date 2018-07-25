@@ -40,7 +40,11 @@ case $command in
     echo "Update vm nodes to latest"
     ansible $NODE_PREFIX -m apt -a "update_cache=yes upgrade=yes" --become --fork=10
     ;;
+  repo)
+    echo "Update source from git repository"
+    ansible tm-node -m git -a "repo=https://github.com/bomu-bomu/ndid-test-deployment.git dest=/home/tester/ndid-test-deployment force=yes" --fork=10
+    ;;
   *)
-    echo "Usage: $0 <start|stop|update>"
+    echo "Usage: $0 <start|stop|update|repo>"
     ;;
 esac
