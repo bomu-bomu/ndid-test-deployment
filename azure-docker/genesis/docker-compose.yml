@@ -44,6 +44,6 @@ services:
     ports:
       - 8100:8100
     volumes:
-      -./DID:/DID
+      - ./DID:/DID
     network_mode: host
 
