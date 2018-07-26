@@ -33,6 +33,7 @@ case $command in
   reset)
     echo "Reset Genesis Data"
     conf_path=`dirname $CONFIG`
+    ansible $genesis -m file -a "state=absent path=$conf_path/DID" --become
     ansible $genesis -m file -a "state=absent path=$conf_path/store" --become
     ansible $genesis -m file -a "state=directory path=$conf_path/store" --become
     ansible $genesis -m file -a "state=directory path=$conf_path/store/config" --become
