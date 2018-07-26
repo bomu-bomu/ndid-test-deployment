@@ -49,16 +49,7 @@ do
   echo "Start node: $node_name"
   ansible $node_name -m shell -a "GENESIS=$genesis $START_SECONDARY_NODE_CMD"
   i=`expr $i + $incr`
-  expected_validators=`expr $count_validators + $incr`
-
-  echo -n "Total validators: $count_validators -> "
-  while [ "$count_validators" -lt $expected_validators ]
-  do
-    echo -n "."
-    sleep 1
-    count_validators=`get_total_validators`
-  done
-  echo $count_validators
+  sleep 1
 done
 
 stop_time=`date +%s`
